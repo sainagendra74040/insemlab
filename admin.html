@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: Arial; text-align: center; background: #eee; }
+        header { background: navy; color: white; padding: 15px; }
+        input { padding: 10px; margin: 8px; }
+        button { background: orange; color: white; padding: 10px; border: none; }
+        table { margin: 20px auto; border-collapse: collapse; background: white; }
+        th, td { border: 1px solid black; padding: 12px; }
+        th { background: navy; color: white; }
+        a { display: block; margin: 20px; }
+    </style>
+</head>
+<body>
+    <header><h1>Admin Dashboard</h1></header>
+
+    <h2>Add Product</h2>
+    <form onsubmit="addProduct(event)">
+        <input id="name" placeholder="Product Name" required>
+        <input id="price" type="number" placeholder="Price" required>
+        <button type="submit">Add Product</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr><th>Product</th><th>Price</th></tr>
+        </thead>
+        <tbody id="products">
+            <tr><td>Headphones</td><td>₹999</td></tr>
+            <tr><td>Smart Watch</td><td>₹1499</td></tr>
+        </tbody>
+    </table>
+
+    <a href="index.html">Back to Home</a>
+
+    <script>
+        function addProduct(event) {
+            event.preventDefault();
+            let name = document.getElementById("name").value;
+            let price = document.getElementById("price").value;
+            let row = document.createElement("tr");
+            row.innerHTML = "<td>" + name + "</td><td>₹" + price + "</td>";
+            document.getElementById("products").appendChild(row);
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
